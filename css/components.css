@@ -1,0 +1,52 @@
+/* ===== Animations (nhẹ, thân thiện) ===== */
+.fade-in{ animation:fadeIn .6s ease both; }
+.slide-up{ animation:slideUp .6s ease both; }
+.slide-in-left{ animation:slideInLeft .5s ease both; }
+.pop-in{ animation:popIn .35s ease both; }
+.zoom-in{ animation:zoomIn .6s ease both; }
+
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+@keyframes slideUp{ from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+@keyframes slideInLeft{ from{opacity:.2;transform:translateX(-12px)} to{opacity:1;transform:none} }
+@keyframes popIn{ from{opacity:0;transform:scale(.96)} to{opacity:1;transform:scale(1)} }
+@keyframes zoomIn{ from{opacity:0;transform:scale(.9)} to{opacity:1;transform:scale(1)} }
+
+/* ===== Switch ===== */
+.switch{ position:relative; width:50px; height:24px; }
+.switch input{ display:none }
+.switch .slider{
+  position:absolute; inset:0; background:#cbd5e1; border-radius:999px; transition:.25s;
+}
+.switch .slider:before{
+  content:""; position:absolute; width:18px; height:18px; left:3px; top:3px;
+  background:#fff; border-radius:50%; transition:.25s;
+}
+.switch input:checked + .slider{ background:var(--primary) }
+.switch input:checked + .slider:before{ transform:translateX(26px) }
+
+/* ===== Modal ===== */
+.modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:50; }
+.modal[aria-hidden="false"]{ display:flex; }
+.modal-overlay{ position:absolute; inset:0; background:rgba(0,0,0,.35); }
+.modal-content{
+  position:relative; background:var(--card); border:1px solid var(--border);
+  border-radius:16px; width:min(640px,92vw); box-shadow:var(--shadow); padding:0;
+}
+body.dark-mode .modal-content{ background:var(--card-dark); border-color:#374151; }
+.modal-head{ display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); }
+.modal-body{ padding:16px; display:flex; flex-direction:column; gap:12px }
+.modal-foot{ padding:14px 16px; display:flex; justify-content:flex-end; gap:10px; border-top:1px solid var(--border) }
+.form-group{ display:flex; flex-direction:column; gap:6px }
+
+/* ===== Helpers ===== */
+.only-mobile{ display:none }
+@media (max-width:720px){ .only-mobile{ display:inline-flex } }
+.logo-preview{ width:56px; height:56px; border-radius:12px; object-fit:cover }
+
+/* Khi vào viewport thì animation chạy */
+.fade-in, .slide-up, .zoom-in, .pop-in { opacity: 0; }
+.in-view.fade-in { animation: fadeIn .6s ease forwards; }
+.in-view.slide-up { animation: slideUp .6s ease forwards; }
+.in-view.zoom-in { animation: zoomIn .6s ease forwards; }
+.in-view.pop-in { animation: popIn .6s ease forwards; }
+

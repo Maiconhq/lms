@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS Lê Quý Đôn - Đăng nhập</title>
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1e3a8a;   /* Navy */
+      --secondary-color: #16a34a; /* Green */
+      --accent-color: #f59e0b;    /* Yellow */
+      --light-color: #f3f4f6;
+      --dark-color: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+      transition: background 0.4s, color 0.4s;
+      padding: 20px;
+    }
+
+    .login-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .login-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .login-brand .logo {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 20px;
+      display: block;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 12px;
+      background: white;
+    }
+
+    .login-brand h1 {
+      margin: 0 0 8px 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: 0.5px;
+    }
+
+    .slogan {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: #4b5563;
+      font-weight: 500;
+      max-width: 300px;
+      line-height: 1.5;
+    }
+
+    .login-card {
+      background: #fff;
+      padding: 2.5rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .login-form h2 {
+      margin-bottom: 1.8rem;
+      color: var(--primary-color);
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+    }
+
+    .btn-login {
+      margin-top: 10px;
+      width: 100%;
+      padding: 14px;
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-login:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .forgot {
+      margin-top: 16px;
+    }
+
+    .forgot a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .forgot a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+    }
+
+    /* Toggle switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 28px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(30px);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #1f2937, #111827);
+      color: #eee;
+    }
+
+    body.dark-mode .login-card {
+      background: #2d3748;
+      color: #fff;
+    }
+
+    body.dark-mode input {
+      background: #4a5568;
+      color: #fff;
+      border-color: #4b5563;
+    }
+
+    body.dark-mode label {
+      color: #e5e7eb;
+    }
+
+    body.dark-mode .slogan {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .login-brand h1 {
+      color: #e5e7eb;
+    }
+
+    /* Responsive design */
+    @media (max-width: 500px) {
+      .login-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      .login-brand .logo {
+        width: 130px;
+        height: 130px;
+      }
+      
+      .login-brand h1 {
+        font-size: 1.7rem;
+      }
+      
+      .slogan {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="light-mode">
+
+  <div class="login-wrapper">
+    <!-- Logo + Banner -->
+    <div class="login-brand fade-in">
+      <img src="assets/images/lms-logo.png" alt="LMS Lê Quý Đôn" class="logo">
+      <h1>LMS LÊ QUÝ ĐÔN</h1>
+      <p class="slogan">Học tập hiệu quả – Tương lai rộng mở ✨</p>
+    </div>
+
+    <!-- Card đăng nhập -->
+    <div class="login-card slide-up">
+      <form id="loginForm" class="login-form">
+        <h2>Đăng nhập</h2>
+
+        <div class="form-group">
+          <label for="email">Email/Username</label>
+          <input type="text" id="email" placeholder="VD: admin@lms.local" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-login">Đăng nhập</button>
+
+        <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
+      </form>
+
+      <!-- Dark/Light mode toggle -->
+      <div class="theme-toggle">
+        <span>🌞</span>
+        <label class="switch">
+          <input type="checkbox" id="themeSwitch">
+          <span class="slider round"></span>
+        </label>
+        <span>🌙</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Xử lý chuyển đổi chế độ sáng/tối
+    document.addEventListener('DOMContentLoaded', function() {
+      const themeSwitch = document.getElementById('themeSwitch');
+      const body = document.body;
+      
+      // Kiểm tra nếu có thiết lập theme trong localStorage
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeSwitch.checked = true;
+      }
+      
+      // Xử lý sự kiện chuyển đổi theme
+      themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+          body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          body.classList.remove('dark-mode');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      
+      // Xử lý form đăng nhập
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Ở đây bạn có thể thêm logic xử lý đăng nhập
+        console.log('Email:', email);
+        console.log('Password:', password);
+        
+        // Hiển thị thông báo đăng nhập (tạm thời)
+        alert('Chức năng đăng nhập đang được hoàn thiện!');
+      });
+    });
+  </script>
+</body>
+</html>

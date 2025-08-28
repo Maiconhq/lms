@@ -1,0 +1,178 @@
+:root {
+  --primary-color: #1e3a8a;   /* Navy */
+  --secondary-color: #16a34a; /* Green */
+  --accent-color: #f59e0b;    /* Yellow */
+  --light-color: #f3f4f6;
+  --dark-color: #1f2937;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+  transition: background 0.4s, color 0.4s;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* logo + card đều canh giữa */
+  min-height: 100vh;         /* đảm bảo chiếm đủ chiều cao */
+  gap: 1.5rem;               /* khoảng cách logo và card */
+  text-align: center;
+}
+
+.login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Thêm dòng này để căn giữa theo chiều dọc */
+  margin-bottom: 1rem; /* Tạo khoảng cách với form đăng nhập */
+}
+
+.login-brand .logo {
+  width: 160px; /* Tăng kích thước logo một chút */
+  margin-bottom: 15px; /* Tăng khoảng cách dưới logo */
+  display: block;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 0.5px; /* Thêm khoảng cách chữ cho đẹp */
+}
+
+.slogan {
+  margin-top: 8px; /* Tăng khoảng cách trên */
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500; /* Làm đậm nhẹ cho dễ đọc */
+}
+
+
+
+.login-card {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 1.2rem;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.btn-login {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background: var(--secondary-color);
+}
+
+.forgot {
+  margin-top: 12px;
+}
+
+.theme-toggle {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input {display:none;}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top:0; left:0; right:0; bottom:0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px; width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Dark mode */
+body.dark-mode {
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: #eee;
+}
+
+body.dark-mode .login-card {
+  background: #2d3748;
+  color: #fff;
+}
+
+body.dark-mode input {
+  background: #4a5568;
+  color: #fff;
+  border-color: #666;
+}
